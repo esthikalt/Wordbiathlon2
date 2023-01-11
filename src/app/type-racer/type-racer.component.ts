@@ -9,9 +9,22 @@ import { Component } from '@angular/core';
 export class TypeRacerComponent{
   title = '';
   test = '';
+  text = 'Funktioniert das eigentlich?';
+
+  myArray:string[] = [];
+  counter = 0;
+
+  ngOnInit(){
+    this.myArray = this.text.split(' ');
+  }
 
   onEnter(x:string){
-    this.test = x;
-    return;
+    if(x === this.myArray[this.counter]){
+      this.test = this.test + ' ' + this.myArray[this.counter];
+      this.myArray[this.counter] = "hallo";
+      this.counter++;
+    } else {
+    }
+    console.log(this.counter);
   }
 }
