@@ -1,14 +1,16 @@
-<p id="testText"
-ngModel
-name="derText"
-[ngStyle]="{backgroundColor: changeColor()}"
->{{text}}</p>
-<form #testForm="ngForm" (keyup.space)="onEnter(testForm);">
-  <input
-  type="text"
+<mat-card>
+  <p id="testText"
   ngModel
-  name="title"
-  >
-</form>
-<p>{{test}}</p>
+  name="derText"
+  [ngStyle]="{color: changeColor()}"
+  >{{text}}</p>
+  <form #testForm="ngForm" (keyup.space)="onEnter(testForm);">
+    <input
+    type="text"
+    ngModel
+    name="title"
+    >
+  </form>
+  <p>{{test}}</p>
+</mat-card>
 

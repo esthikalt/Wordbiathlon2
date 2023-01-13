@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 
 export class TypeRacerComponent{
   title = '';
-  text = 'Funktioniert das eigentlich?';
+  text = 'Chameleons or chamaeleons (family Chamaeleonidae) are a distinctive and highly specialized clade of Old World lizards with 202 species described as of June 2015.';
   x = '';
   test = '';
   state = 0;
@@ -37,7 +37,7 @@ export class TypeRacerComponent{
 
     changeColor(){
       if(this.state == 0){
-        return 'white';
+        return 'black';
       } else if(this.state == 1) {
         return 'green';
       } else {
