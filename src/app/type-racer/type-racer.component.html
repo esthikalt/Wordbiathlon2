@@ -1,5 +1,5 @@
 <p id="testText">{{text}}</p>
-<form #testForm="ngForm" (keyup.enter)="onEnter(testForm)">
+<form #testForm="ngForm" (keydown.space)="onEnter(testForm)">
   <input
   type="text"
   ngModel

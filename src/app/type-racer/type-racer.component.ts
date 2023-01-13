@@ -27,9 +27,9 @@ export class TypeRacerComponent{
       this.test = this.test + ' ' + this.myArray[this.counter];
       this.myArray[this.counter] = "hallo";
       this.counter++;
+      form.resetForm();
     } else {
     }
     console.log(this.counter);
-    form.resetForm();
-  }
+    }
 }
