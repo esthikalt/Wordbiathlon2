@@ -1,5 +1,9 @@
-<p id="testText">{{text}}</p>
-<form #testForm="ngForm" (keydown.space)="onEnter(testForm)">
+<p id="testText"
+ngModel
+name="derText"
+[ngStyle]="{backgroundColor: changeColor()}"
+>{{text}}</p>
+<form #testForm="ngForm" (keyup.space)="onEnter(testForm);">
   <input
   type="text"
   ngModel
@@ -7,6 +11,4 @@
   >
 </form>
 <p>{{test}}</p>
-<div id="myText" class="red-text">Super cooler Text, der ursprünglich rot ist.</div>
-<button type="button" onclick="document.getElementById('myText').style.color = 'blue'">Drück mich für blauen text!</button>
-<button type="button" onclick="document.getElementById('testText').style.color='green'"></button>
+

@@ -10,9 +10,10 @@ import { NgForm } from '@angular/forms';
 
 export class TypeRacerComponent{
   title = '';
-  test = '';
   text = 'Funktioniert das eigentlich?';
   x = '';
+  test = '';
+  state = 0;
 
   myArray:string[] = [];
   counter = 0;
@@ -23,13 +24,24 @@ export class TypeRacerComponent{
 
   onEnter(form:NgForm){
     this.x = form.value.title;
-    if(this.x === this.myArray[this.counter]){
+    if(this.x === this.myArray[this.counter] + ' '){
       this.test = this.test + ' ' + this.myArray[this.counter];
-      this.myArray[this.counter] = "hallo";
       this.counter++;
       form.resetForm();
+      this.state = 1;
     } else {
+      this.state = 2;
     }
     console.log(this.counter);
+    }
+
+    changeColor(){
+      if(this.state == 0){
+        return 'white';
+      } else if(this.state == 1) {
+        return 'green';
+      } else {
+        return 'red';
+      }
     }
 }
