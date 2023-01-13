@@ -3,7 +3,7 @@
   ngModel
   name="derText"
   [ngStyle]="{color: changeColor()}"
-  >{{text}}</p>
+  ></p>
   <form #testForm="ngForm" (keyup.space)="onEnter(testForm);">
     <input
     type="text"
@@ -13,4 +13,7 @@
   </form>
   <p>{{test}}</p>
 </mat-card>
+<body></body>
+<p>{{timeLeft}}{{timerText}}</p>
+
 

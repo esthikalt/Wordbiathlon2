@@ -14,18 +14,42 @@ export class TypeRacerComponent{
   x = '';
   test = '';
   state = 0;
-
-  myArray:string[] = [];
+  timeLeft = 180;
+  textArray:string[] = [];
   counter = 0;
+  interval: any;
+  timerText:string = " Seconds left...";
+  currentSpan: any;
+  currentWord:any;
+  tryyy:any;
 
   ngOnInit(){
-    this.myArray = this.text.split(' ');
+    this.textArray = this.text.split(' ');
+    this.startTimer();
+    for(var i = 0; i < this.textArray.length; i++ ){
+      this.tryyy = this.textArray[i] + " ";
+      this.currentSpan = document.createElement("span" + i);
+      this.currentWord = document.createTextNode(this.tryyy);
+      this.currentSpan.appendChild(this.currentWord);
+      document.body.appendChild(this.currentSpan);
+    }
   }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.timerText = " Seconds left, your time is over!";
+      }
+    },1000)
+  }
+
 
   onEnter(form:NgForm){
     this.x = form.value.title;
-    if(this.x === this.myArray[this.counter] + ' '){
-      this.test = this.test + ' ' + this.myArray[this.counter];
+    if(this.x === this.textArray[this.counter] + ' '){
+      this.test = this.test + ' ' + this.textArray[this.counter];
       this.counter++;
       form.resetForm();
       this.state = 1;
