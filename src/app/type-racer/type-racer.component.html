@@ -1,9 +1,4 @@
 <mat-card>
-  <p id="testText"
-  ngModel
-  name="derText"
-  [ngStyle]="{color: changeColor()}"
-  ></p>
   <form #testForm="ngForm" (keyup.space)="onEnter(testForm);">
     <input
     type="text"
@@ -11,9 +6,9 @@
     name="title"
     >
   </form>
-  <p>{{test}}</p>
 </mat-card>
-<body></body>
+
+<p id="hi"></p>
 <p>{{timeLeft}}{{timerText}}</p>
 
 

@@ -1,6 +1,7 @@
 import { formatCurrency } from '@angular/common';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { elementAt } from 'rxjs';
 
 @Component({
   selector: 'type-racer',
@@ -21,17 +22,23 @@ export class TypeRacerComponent{
   timerText:string = " Seconds left...";
   currentSpan: any;
   currentWord:any;
+  wordSpan:any;
   tryyy:any;
+  counterString:string = "0";
+  textp:any;
+  i = 0;
 
   ngOnInit(){
     this.textArray = this.text.split(' ');
     this.startTimer();
-    for(var i = 0; i < this.textArray.length; i++ ){
-      this.tryyy = this.textArray[i] + " ";
-      this.currentSpan = document.createElement("span" + i);
+    for(this.i; this.i < this.textArray.length; this.i++ ){
+      this.tryyy = this.textArray[this.i] + " ";
+      this.currentSpan = document.createElement("span" + this.i);
+      this.currentSpan.setAttribute("id", this.i);
       this.currentWord = document.createTextNode(this.tryyy);
       this.currentSpan.appendChild(this.currentWord);
-      document.body.appendChild(this.currentSpan);
+      this.textp = document.getElementById("hi");
+      this.textp.appendChild(this.currentSpan);
     }
   }
 
@@ -48,24 +55,16 @@ export class TypeRacerComponent{
 
   onEnter(form:NgForm){
     this.x = form.value.title;
+    this.wordSpan = document.getElementById(this.counter.toString());
     if(this.x === this.textArray[this.counter] + ' '){
       this.test = this.test + ' ' + this.textArray[this.counter];
-      this.counter++;
+      this.wordSpan.setAttribute("style", "color:green");
       form.resetForm();
-      this.state = 1;
+      this.counter++;
     } else {
-      this.state = 2;
+      this.wordSpan.setAttribute("style", "color:red");
     }
     console.log(this.counter);
     }
 
-    changeColor(){
-      if(this.state == 0){
-        return 'black';
-      } else if(this.state == 1) {
-        return 'green';
-      } else {
-        return 'red';
-      }
-    }
 }
