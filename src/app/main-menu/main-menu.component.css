@@ -1,5 +1,13 @@
 button {
-  margin-top: 2%;
   margin-left: 25%;
   width: 50%;
 }
+
+button.mano {
+  margin-top: 2%;
+  background-color: cornflowerblue;
+  color: floralwhite;
+  display: block;
+}
+
+

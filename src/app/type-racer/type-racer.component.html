@@ -1,5 +1,5 @@
 <mat-card>
-  <form #testForm="ngForm" (keyup.space)="onEnter(testForm);">
+  <form #testForm="ngForm" (keydown.space)="onEnter(testForm)">
     <input
     type="text"
     ngModel

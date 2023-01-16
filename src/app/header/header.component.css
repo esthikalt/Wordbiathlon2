@@ -1,6 +1,18 @@
-a {
+h1 {
   color: floralwhite;
+  font-family: "Lucida Console", "Courier New", monospace;
+  text-align: center;
 }
+
 .spacer {
   flex: 1 1 auto;
+}
+
+.home:hover {
+  color: rgb(188, 184, 177);
+  cursor: pointer;
+}
+
+.home {
+  color: floralwhite;
 }

@@ -55,16 +55,18 @@ export class TypeRacerComponent{
 
   onEnter(form:NgForm){
     this.x = form.value.title;
+   while(this.x.charAt(0) === ' ')
+    {
+    this.x = this.x.substring(1);
+    }
     this.wordSpan = document.getElementById(this.counter.toString());
-    if(this.x === this.textArray[this.counter] + ' '){
+    if(this.x === this.textArray[this.counter]){
       this.test = this.test + ' ' + this.textArray[this.counter];
       this.wordSpan.setAttribute("style", "color:green");
-      form.resetForm();
       this.counter++;
+      form.resetForm();
     } else {
       this.wordSpan.setAttribute("style", "color:red");
     }
-    console.log(this.counter);
-    }
-
+  }
 }
