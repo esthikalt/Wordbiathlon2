@@ -4,6 +4,13 @@ h1 {
   text-align: center;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
 .spacer {
   flex: 1 1 auto;
 }
@@ -15,4 +22,18 @@ h1 {
 
 .home {
   color: floralwhite;
+}
+
+b {
+  color: white;
+  text-decoration: none;
+}
+
+b:hover {
+  cursor: pointer;
+  color: rgb(188, 184, 177);
+}
+
+.smallSpacer {
+  width: 20px;
 }
