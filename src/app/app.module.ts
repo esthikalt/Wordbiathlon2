@@ -33,7 +33,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     MainMenuComponent,
     LoginComponent,
     SignupComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
