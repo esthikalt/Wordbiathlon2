@@ -4,9 +4,18 @@
   </span>
   <span class="spacer"></span>
   <ul>
-    <li>
+    <li *ngIf="!userIsAuthenticated">
       <b mat-button routerLink="/login">Login</b>
     </li>
+    <span class="smallSpacer"></span>
+    <li *ngIf="!userIsAuthenticated">
+      <b mat-button routerLink="/signup">Signup</b>
+    </li>
+    <span class="smallSpacer"></span>
+    <li *ngIf="userIsAuthenticated">
+      <b mat-button (click)="onLogout()">Logout</b>
+    </li>
+
     <span class="smallSpacer"></span>
     <li>
       <mat-icon class="home" aria-hidden="false" routerLink="/" fontIcon="home"></mat-icon>
