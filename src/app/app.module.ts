@@ -16,6 +16,7 @@ import { MatMenu, MatMenuModule } from '@angular/material/menu';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+
 import { TypeRacerComponent } from './type-racer/type-racer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
@@ -49,6 +50,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     HttpClientModule
     ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+
   ],
   bootstrap: [AppComponent]
 })
