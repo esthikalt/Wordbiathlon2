@@ -1,14 +1,22 @@
-<p id="hi"></p>
+<p class="Text" id="hi"></p>
 
-<mat-card>
-  <form #testForm="ngForm" (keydown.space)="onEnter(testForm)">
-    <input
-    type="text"
-    ngModel
-    name="title"
-    >
-  </form>
+<mat-card *ngIf="playStatus">
+  <mat-form-field>
+    <form #testForm="ngForm" (keydown.space)="onEnter(testForm)">
+      <input
+      matInput
+      type="text"
+      ngModel
+      name="title"
+      >
+    </form>
+  </mat-form-field>
 </mat-card>
-<p>{{timeLeft}}{{timerText}}</p>
+<br>
+<p *ngIf="playStatus">{{pretimerText}}{{time}}{{timerText}}</p>
+<p *ngIf="!playStatus">Overall speed: {{result}} Characters per minute</p>
+<br>
+<button *ngIf="!playStatus" class="b" mat-raised-button disabled="!userIsAuthenticated"> Save Speed </button>
+<div class="hide"> You have to be logged in to save your speed. </div>
 
 

@@ -1,7 +1,9 @@
 h1 {
   color: floralwhite;
-  font-family: "Lucida Console", "Courier New", monospace;
   text-align: center;
+  font-size: xx-large;
+  padding: 0;
+  margin: 0;
 }
 
 ul {

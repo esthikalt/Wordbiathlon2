@@ -1,6 +1,6 @@
 <html>
   <button mat-raised-button class="menu" routerLink="/typeracer">Play</button>
-  <button mat-raised-button class="menu"></button>
+  <button *ngIf="userIsAuthenticated" mat-raised-button class="menu"> Saved Games </button>
   <button mat-raised-button class="menu"></button>
   <button mat-raised-button class="menu" >Settings</button>
 </html>

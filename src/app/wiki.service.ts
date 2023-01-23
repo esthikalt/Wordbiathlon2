@@ -28,7 +28,7 @@ export class WikiService {
       params: {
         action:'query',
         prop:'extracts',
-        exsentences:'5',
+        exsentences:'1',
         exlimit:'1',
         titles: articleTitle,
         explaintext:'1',
