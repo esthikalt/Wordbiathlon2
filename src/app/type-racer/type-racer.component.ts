@@ -15,7 +15,7 @@ export class TypeRacerComponent{
 
   constructor(private wiki: WikiService) { }
 
-  title = '';
+  title = 'TypeRacer';
   text = '';
   x = '';
   test = '';
@@ -34,6 +34,7 @@ export class TypeRacerComponent{
   i = 0;
 
   async ngOnInit() {
+    while(true){
     const titleRes:any = await this.wiki.getRandomTitle().toPromise();
     var randoms = titleRes.query.random;
     this.title = randoms[0].title;
@@ -42,12 +43,19 @@ export class TypeRacerComponent{
     var content = textRes.query.pages;
     this.text = content[0].extract;
 
-    //TODO: Kömische Zeichen rausfiltern
-    //TODO: Falls zu Kurz: neuen Text finden
+    //Komische Zeichen rausfiltern + üöä ersetzten
+    this.text = this.text.replace(/\s{2,}/g, ' ');
+    this.text= this.text.replace(/[–]/g,'-');
+    this.text = this.text.replace(/[^a-zA-Z0-9 ().,-:;]/g, '');
+    if(this.text.split(' ').length > 99 && this.text.split(' ').length < 200){
+      break;
+    }
+    }
 
+    //TODO: bugfix
     this.textArray = this.text.split(' ');
     this.startTimer();
-    for (this.i; this.i < this.textArray.length; this.i++) {
+    for (this.i = 0; this.i < this.textArray.length; this.i++) {
       this.tryyy = this.textArray[this.i] + " ";
       this.currentSpan = document.createElement("span" + this.i);
       this.currentSpan.setAttribute("id", this.i);
@@ -75,6 +83,9 @@ export class TypeRacerComponent{
       this.x = this.x.substring(1);
     }
     this.wordSpan = document.getElementById(this.counter.toString());
+    /*console.log(this.wordSpan);
+    console.log('I' + form.value.title + 'I');
+    console.log('I' + this.textArray[this.counter] + 'I');*/
     if (this.x === this.textArray[this.counter]) {
       this.test = this.test + ' ' + this.textArray[this.counter];
       this.wordSpan.setAttribute("style", "color:green");
@@ -83,5 +94,15 @@ export class TypeRacerComponent{
     } else {
       this.wordSpan.setAttribute("style", "color:red");
     }
+  }
+
+  WordCount(str: string) {
+    var totalSoFar = 0;
+    for (var i = 0; i < str.length; i++){
+      if (str.charAt(i) === " ") { // if a space is found in str
+        totalSoFar = +1; // add 1 to total so far
+    }
+    }
+    return totalSoFar += 1; // add 1 to totalsoFar to account for extra space since 1 space = 2 words
   }
 }
