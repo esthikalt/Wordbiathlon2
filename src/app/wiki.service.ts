@@ -2,7 +2,6 @@ import { SelectorMatcher } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { json } from 'express';
-import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +32,7 @@ export class WikiService {
         titles: articleTitle,
         explaintext:'1',
         formatversion:'2',
-        utf8:'1',
+        utf8:'*',
         format:'json',
         origin:'*'
       }});
