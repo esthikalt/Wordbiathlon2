@@ -60,8 +60,6 @@ export class TypeRacerComponent{
       break;
     }
     }
-
-    //TODO: bugfix
     this.textArray = this.text.split(' ');
 
     for (this.i = 0; this.i < this.textArray.length; this.i++) {
@@ -103,9 +101,6 @@ if(this.counter == 0){
       this.x = this.x.substring(1);
     }
     this.wordSpan = document.getElementById(this.counter.toString());
-    /*console.log(this.wordSpan);
-    console.log('I' + form.value.title + 'I');
-    console.log('I' + this.textArray[this.counter] + 'I');*/
     if (this.x === this.textArray[this.counter]) {
       if(this.counter >= this.textArray.length - 1){
         this.playStatus = false;
