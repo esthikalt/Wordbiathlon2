@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from "../auth/auth.service";
 import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
@@ -10,18 +10,25 @@ import { Router } from "@angular/router";
   styleUrls: ['./main-menu.component.css']
 })
 
-export class MainMenuComponent {
-  userIsAuthenticated = false;
-  private authListenerSubs!: Subscription;
-  constructor(private authService: AuthService, private _router: Router) {}
+export class MainMenuComponent implements OnInit, OnDestroy {
+
+  constructor(private _authService: AuthService) {}
+  userIsAuthenticated:boolean;
+  private authListenerSubs: Subscription;
+
 
 
   ngOnInit(){
-    this.authListenerSubs = this.authService
+    this.userIsAuthenticated = this._authService.getIsAuth();
+    this.authListenerSubs = this._authService
     .getAuthStatusListener()
     .subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
     });
+  }
+
+  ngOnDestroy(){
+    this.authListenerSubs.unsubscribe();
   }
 
 }

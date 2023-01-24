@@ -14,4 +14,7 @@ html {
   padding-top: 50px;
 }
 
+button.menu.disabled {
+  background-color: gray;
+}
 

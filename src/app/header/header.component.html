@@ -15,10 +15,9 @@
     <li *ngIf="userIsAuthenticated">
       <b mat-button (click)="onLogout()">Logout</b>
     </li>
-
     <span class="smallSpacer"></span>
     <li>
-      <mat-icon class="home" aria-hidden="false" routerLink="/" fontIcon="home"></mat-icon>
+      <b mat-button routerLink="/">Main Menu</b>
     </li>
   </ul>
 </mat-toolbar>
