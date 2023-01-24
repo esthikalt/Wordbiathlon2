@@ -56,6 +56,8 @@ export class TypeRacerComponent{
     this.text = this.text.replace(/\s{2,}/g, ' ');
     this.text= this.text.replace(/[–]/g,'-');
     this.text = this.text.replace(/[^a-zA-Z0-9 ().,-:;]/g, '');
+
+    //Zu lange und zu kurze Texte rausfiltern
     if(this.text.split(' ').length > 99 && this.text.split(' ').length < 200){
       break;
     }

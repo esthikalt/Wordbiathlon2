@@ -15,6 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
 
 
 import { TypeRacerComponent } from './type-racer/type-racer.component';
@@ -24,6 +25,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { SavedGamesComponent } from './saved-games/saved-games.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     HeaderComponent,
     MainMenuComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    SavedGamesComponent,
+    LeaderboardComponent,
     ],
   imports: [
     BrowserModule,
@@ -46,6 +51,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     MatMenuModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatTableModule,
     RouterModule,
     HttpClientModule
     ],

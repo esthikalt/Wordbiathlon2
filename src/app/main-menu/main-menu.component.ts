@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from "../auth/auth.service";
 import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./main-menu.component.css']
 })
 
-export class MainMenuComponent {
+export class MainMenuComponent implements OnInit, OnDestroy{
   userIsAuthenticated = false;
   private authListenerSubs!: Subscription;
   constructor(private authService: AuthService, private _router: Router) {}
@@ -21,7 +21,13 @@ export class MainMenuComponent {
     .getAuthStatusListener()
     .subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
+      console.log("subResponse: " + isAuthenticated);
+      console.log("lokale Variable: " + this.userIsAuthenticated);
     });
+    console.log("lokale außerhalb vom sub: " + this.userIsAuthenticated);
   }
 
+  ngOnDestroy(){
+    this.authListenerSubs.unsubscribe();
+  }
 }
