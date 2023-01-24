@@ -15,7 +15,7 @@ import { WikiService } from '../wiki.service';
 
 export class TypeRacerComponent{
 
-  constructor(private wiki: WikiService, private authService: AuthService ) { }
+  constructor(private authService: AuthService, private wiki: WikiService){}
 
   title = 'TypeRacer';
   text = '';
@@ -40,9 +40,12 @@ export class TypeRacerComponent{
   i = 0;
   playStatus = true;
   userIsAuthenticated = false;
-  private authListenerSubs!: Subscription;
+
+
 
   async ngOnInit() {
+    this.userIsAuthenticated = this.authService.getIsAuth();
+
     while(true){
     const titleRes:any = await this.wiki.getRandomTitle().toPromise();
     var randoms = titleRes.query.random;
@@ -60,7 +63,7 @@ export class TypeRacerComponent{
     //Zu lange und zu kurze Texte rausfiltern
     if(this.text.split(' ').length > 99 && this.text.split(' ').length < 200){
       break;
-    }
+    //}
     }
     this.textArray = this.text.split(' ');
 
@@ -75,12 +78,6 @@ export class TypeRacerComponent{
       this.textp = document.getElementById("hi");
       this.textp.appendChild(this.currentSpan);
     }
-
-    this.authListenerSubs = this.authService
-    .getAuthStatusListener()
-    .subscribe(isAuthenticated => {
-      this.userIsAuthenticated = isAuthenticated;
-    });
   }
 
   startTimer() {
@@ -117,13 +114,4 @@ if(this.counter == 0){
     }
   }
 
-  WordCount(str: string) {
-    var totalSoFar = 0;
-    for (var i = 0; i < str.length; i++){
-      if (str.charAt(i) === " ") { // if a space is found in str
-        totalSoFar = +1; // add 1 to total so far
-    }
-    }
-    return totalSoFar += 1; // add 1 to totalsoFar to account for extra space since 1 space = 2 words
-  }
 }

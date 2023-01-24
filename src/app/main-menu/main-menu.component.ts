@@ -10,14 +10,17 @@ import { Router } from "@angular/router";
   styleUrls: ['./main-menu.component.css']
 })
 
-export class MainMenuComponent implements OnInit, OnDestroy{
-  userIsAuthenticated = false;
-  private authListenerSubs!: Subscription;
-  constructor(private authService: AuthService, private _router: Router) {}
+export class MainMenuComponent implements OnInit, OnDestroy {
+
+  constructor(private _authService: AuthService) {}
+  userIsAuthenticated:boolean;
+  private authListenerSubs: Subscription;
+
 
 
   ngOnInit(){
-    this.authListenerSubs = this.authService
+    this.userIsAuthenticated = this._authService.getIsAuth();
+    this.authListenerSubs = this._authService
     .getAuthStatusListener()
     .subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
@@ -30,4 +33,5 @@ export class MainMenuComponent implements OnInit, OnDestroy{
   ngOnDestroy(){
     this.authListenerSubs.unsubscribe();
   }
+
 }
