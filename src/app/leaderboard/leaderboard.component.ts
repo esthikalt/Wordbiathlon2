@@ -4,12 +4,13 @@ export interface leaderboard {
   position: number;
   name: string;
   cpm: number;
+  title: string;
   date: string;
 }
 
 const ELEMENT_DATA: leaderboard[] = [
-  {position: 1, name: 'Julius', cpm: 567, date: '24.01.2023'},
-  {position: 2, name: 'Julius', cpm: 498, date: '24.01.2023'},
+  {position: 1, name: 'Julius', cpm: 567, title: 'Wurm', date: '24.01.2023'},
+  /*{position: 2, name: 'Julius', cpm: 498, date: '24.01.2023'},
   {position: 3, name: 'Julius', cpm: 471, date: '24.01.2023'},
   {position: 4, name: 'Julius', cpm: 470, date: '24.01.2023'},
   {position: 5, name: 'Esther', cpm: 10, date: '24.01.2023'},
@@ -17,7 +18,7 @@ const ELEMENT_DATA: leaderboard[] = [
   {position: 7, name: 'Esther', cpm: 9, date: '24.01.2023'},
   {position: 8, name: 'Esther', cpm: 9, date: '24.01.2023'},
   {position: 9, name: 'Kiran', cpm: 3, date: '24.01.2023'},
-  {position: 10, name: 'Michael', cpm: 1, date: '24.01.2023'},
+  {position: 10, name: 'Michael', cpm: 1, date: '24.01.2023'},*/
 ];
 
 @Component({
@@ -26,6 +27,6 @@ const ELEMENT_DATA: leaderboard[] = [
   styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent {
-  displayedColumns: string[] = ['position', 'name', 'cpm', 'date'];
+  displayedColumns: string[] = ['position', 'name', 'cpm', 'title', 'date'];
   dataSource = ELEMENT_DATA;
 }
