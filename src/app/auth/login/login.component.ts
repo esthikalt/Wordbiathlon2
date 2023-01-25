@@ -19,7 +19,7 @@ export class LoginComponent {
     if(form.invalid){
       return;
     }
-    this.authService.login(form.value.email, form.value.password);
+    this.authService.login(form.value.email, form.value.password, form.value.name);
     this.router.navigate(["/"]);
   }
 }
