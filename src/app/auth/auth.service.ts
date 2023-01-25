@@ -7,11 +7,16 @@ import { Subject } from "rxjs";
 
 export class AuthService {
 
+  private name;
   private isAuthenticated = false;
   private token:any = null;
   private authStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient){}
+
+  getName(){
+    return this.name;
+  }
 
   getToken(){
     return this.token;
@@ -40,6 +45,7 @@ export class AuthService {
       const token = response.token;
       this.token = token;
       if(token) {
+        this.name = name;
         this.isAuthenticated = true;
         this.authStatusListener.next(true);
       }

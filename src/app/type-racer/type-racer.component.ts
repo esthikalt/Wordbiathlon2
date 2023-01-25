@@ -4,8 +4,10 @@ import { NgForm } from '@angular/forms';
 import { elementAt } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 import { WikiService } from '../wiki.service';
+import { ScoreService } from '../score.service';
 
 @Component({
   selector: 'type-racer',
@@ -15,7 +17,13 @@ import { WikiService } from '../wiki.service';
 
 export class TypeRacerComponent{
 
-  constructor(private authService: AuthService, private wiki: WikiService){}
+
+
+  constructor(
+    private authService: AuthService,
+    private wiki: WikiService,
+    private score: ScoreService
+    ){}
 
   title = 'TypeRacer';
   text = '';
@@ -44,6 +52,7 @@ export class TypeRacerComponent{
 
 
   async ngOnInit() {
+
     this.userIsAuthenticated = this.authService.getIsAuth();
 
     while(true){
@@ -61,12 +70,12 @@ export class TypeRacerComponent{
     this.text = this.text.replace(/[^a-zA-Z0-9 ().,-:;]/g, '');
 
     //Zu lange und zu kurze Texte rausfiltern
-    if(this.text.split(' ').length > 99 && this.text.split(' ').length < 200){
+    //if(this.text.split(' ').length > 99 && this.text.split(' ').length < 200){
       break;
     //}
-    }
-    this.textArray = this.text.split(' ');
+  }
 
+    this.textArray = this.text.split(' ');
     for (this.i = 0; this.i < this.textArray.length; this.i++) {
       this.wordArray = this.textArray[this.i].split('');
       this.characterCounter += this.wordArray.length;
@@ -79,7 +88,7 @@ export class TypeRacerComponent{
       this.textp.appendChild(this.currentSpan);
     }
   }
-}
+
 
   startTimer() {
     this.interval = setInterval(() => {
@@ -113,5 +122,10 @@ if(this.counter == 0){
     } else {
       this.wordSpan.setAttribute("style", "color:red");
     }
+  }
+
+  onSave(){
+    let date = new Date();
+    this.score.addScore(this.authService.getName(), this.result, this.title, date);
   }
 }

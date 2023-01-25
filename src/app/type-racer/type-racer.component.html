@@ -18,6 +18,6 @@
 <p *ngIf="playStatus">{{pretimerText}}{{time}}{{timerText}}</p>
 <p *ngIf="!playStatus">Overall speed: {{result}} Characters per minute</p>
 <br>
-<button *ngIf="!playStatus" class="b" mat-raised-button [disabled]="!userIsAuthenticated"> Save Speed </button>
+<button (click)="onSave()" *ngIf="!playStatus" class="b" mat-raised-button [disabled]="!userIsAuthenticated"> Save Speed </button>
 <div class="hide"> You have to be logged in to save your speed. </div>
 
