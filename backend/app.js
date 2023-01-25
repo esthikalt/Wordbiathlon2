@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 
 const userRoutes = require("./routes/user");
+const scoreRoutes = require("./routes/score");
 const app = express();
 
 mongoose.connect("mongodb+srv://Esther:EBWPwsY3vg3h5QOT@cluster0.mhqohdl.mongodb.net/")
@@ -29,5 +30,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/user", userRoutes);
+app.use("/api/score", scoreRoutes);
 
 module.exports = app;

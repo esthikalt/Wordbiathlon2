@@ -79,6 +79,7 @@ export class TypeRacerComponent{
       this.textp.appendChild(this.currentSpan);
     }
   }
+}
 
   startTimer() {
     this.interval = setInterval(() => {
@@ -113,5 +114,4 @@ if(this.counter == 0){
       this.wordSpan.setAttribute("style", "color:red");
     }
   }
-
 }
