@@ -43,7 +43,7 @@ export class LeaderboardComponent {
   ngOnInit(){
     this.score.getScores();
     this.scoresSub = this.score.getScoreUpdateListener().subscribe((scores: Score[]) => {
-      this.dataSource = scores;
+    this.dataSource = scores.sort((firstItem, secondItem) => secondItem.cpm - firstItem.cpm);
   });
  }
 }
