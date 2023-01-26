@@ -36,6 +36,13 @@ export class ScoreService {
     return this.scoresUpdated.asObservable();
   }
 
+  deleteScore(){
+    this.http.delete("http://localhost:3000/api/score/savedgames")
+    .subscribe(() => {
+      this.scores = [];
+      this.scoresUpdated.next([...this.scores]);
+    });
+  }
 
   addScore(name: string, cpm: number, title: string, date: Date){
     const score: Score = {_id: null, name: name, cpm: cpm, title: title, date: date};

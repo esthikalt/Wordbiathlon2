@@ -31,4 +31,11 @@ router.get("/savedgames", (req, res, next) => {
   });
 });
 
+router.delete("/savedgames", (req, res, next) => {
+  Score.deleteMany(this.all).then(result => {
+    console.log(result);
+  });
+  res.status(200).json({  message: "Saved Scores deleted!"});
+});
+
 module.exports = router;
