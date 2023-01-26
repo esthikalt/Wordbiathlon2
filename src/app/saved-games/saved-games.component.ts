@@ -37,7 +37,9 @@ export class SavedGamesComponent {
   scores: Score[] = [];
   private scoresSub: Subscription;
 
-
+  onDelete(){
+    this.score.deleteScore();
+  }
 
   ngOnInit(){
     this.score.getScores();
