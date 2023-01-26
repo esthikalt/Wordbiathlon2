@@ -24,7 +24,7 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './auth/auth-interceptor';
+//import { AuthInterceptor } from './auth/auth-interceptor';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { SavedGamesComponent } from './saved-games/saved-games.component';
 
@@ -58,6 +58,8 @@ import { SavedGamesComponent } from './saved-games/saved-games.component';
   /*providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
 
   ],*/
+
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

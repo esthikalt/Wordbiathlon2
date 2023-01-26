@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Score } from '../score.model';
+import { ScoreService } from '../score.service';
 
 export interface leaderboard {
   position: number;
@@ -26,6 +29,21 @@ const DUMMY_DATA: leaderboard[] = [
   styleUrls: ['./saved-games.component.css']
 })
 export class SavedGamesComponent {
+
+  constructor(private score: ScoreService){}
+
   displayedColumns: string[] = ['position', 'cpm', 'title', 'date'];
   dataSource = DUMMY_DATA;
+  scores: Score[] = [];
+  private scoresSub: Subscription;
+
+
+
+  onButton(){
+    this.score.getScores();
+    this.scoresSub = this.score.getScoreUpdateListener().subscribe((scores: Score[]) => {
+      this.scores = scores;
+    });
+
+  }
 }

@@ -4,13 +4,14 @@ const Score = require('../models/score');
 
 const router = express.Router();
 
-router.post("/savescore", (req, res, next) => {
+router.post("/savedgames", (req, res, next) => {
   const score = new Score({
     name: req.body.name,
     cpm: req.body.cpm,
     title: req.body.title,
     date: req.body.date
   });
+  console.log(score);
   score.save().then(result => {
     res.status(201).json({
       message: 'Score saved successfully!',
@@ -19,8 +20,8 @@ router.post("/savescore", (req, res, next) => {
   });
 });
 
-router.get("/getscore", (req, res, next) => {
-  Score.fing()
+router.get("/savedgames", (req, res, next) => {
+  Score.find()
   .then(documents => {
     console.log(documents);
     res.status(200).json({

@@ -29,7 +29,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/api/user", userRoutes);
 app.use("/api/score", scoreRoutes);
+app.use("/api/user", userRoutes);
 
 module.exports = app;

@@ -7,4 +7,4 @@ const scoreSchema = mongoose.Schema({
   date: { type: Date, required: true}
 });
 
-module.exports = mongoose.model('score', scoreSchema);
+module.exports = mongoose.model('Score', scoreSchema);

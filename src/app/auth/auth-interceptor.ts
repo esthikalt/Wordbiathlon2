@@ -1,4 +1,4 @@
-import { HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+/*import { HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { AuthService } from "./auth.service";
 
@@ -14,4 +14,4 @@ constructor(private authService: AuthService) {}
     });
     return next.handle(authRequest);
   }
-}
+}*/
