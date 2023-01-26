@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Score } from '../score.model';
+import { ScoreService } from '../score.service';
 
 export interface leaderboard {
   position: number;
@@ -8,7 +11,7 @@ export interface leaderboard {
   date: string;
 }
 
-const ELEMENT_DATA: leaderboard[] = [
+const DUMMY_DATA: leaderboard[] = [
   {position: 1, name: 'Julius', cpm: 567, title: 'Wurm', date: '24.01.2023'},
   /*{position: 2, name: 'Julius', cpm: 498, date: '24.01.2023'},
   {position: 3, name: 'Julius', cpm: 471, date: '24.01.2023'},
@@ -27,6 +30,20 @@ const ELEMENT_DATA: leaderboard[] = [
   styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent {
+
+  constructor(private score: ScoreService){}
+
   displayedColumns: string[] = ['position', 'name', 'cpm', 'title', 'date'];
-  dataSource = ELEMENT_DATA;
+  dataSource;
+  scores: Score[] = [];
+  private scoresSub: Subscription;
+
+
+
+  ngOnInit(){
+    this.score.getScores();
+    this.scoresSub = this.score.getScoreUpdateListener().subscribe((scores: Score[]) => {
+      this.dataSource = scores;
+  });
+ }
 }

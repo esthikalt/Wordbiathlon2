@@ -33,17 +33,16 @@ export class SavedGamesComponent {
   constructor(private score: ScoreService){}
 
   displayedColumns: string[] = ['position', 'cpm', 'title', 'date'];
+  dataSource;
   scores: Score[] = [];
   private scoresSub: Subscription;
-dataSource:any[];
+
 
 
   ngOnInit(){
     this.score.getScores();
-    this.scoresSub = this.score.getScoreUpdateListener()
-    .subscribe((scores: any) => {
-      this.scores = scores;
+    this.scoresSub = this.score.getScoreUpdateListener().subscribe((scores: Score[]) => {
+      this.dataSource = scores;
     });
-    this.dataSource = this.scores;
   }
 }
