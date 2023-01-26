@@ -3,5 +3,5 @@ export interface Score {
   cpm: number;
   title: string;
   date: Date;
-  id: string;
+  _id: string;
 }
